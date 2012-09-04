@@ -55,4 +55,20 @@ Bargains4business::Application.routes.draw do
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id))(.:format)'
+
+  namespace :api do 
+    resources :pages do 
+
+      collection do 
+        get :published
+        get :unpublished
+      end
+
+      member do 
+        post :publish
+        get :total_words
+      end
+    end
+  end
+
 end
