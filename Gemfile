@@ -7,6 +7,8 @@ gem 'rails', '3.2.2'
 
 gem 'sqlite3'
 
+#gem 'pg'
+
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -25,6 +27,7 @@ group :test, :development do
 	gem 'rspec-rails'
   gem 'cucumber-rails'
   gem 'factory_girl_rails'
+  gem 'database_cleaner'
 end
 
 gem 'jquery-rails'

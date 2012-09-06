@@ -6,5 +6,7 @@ class CreatePages < ActiveRecord::Migration
     	t.datetime :published_on
       t.timestamps
     end
+
+    add_index :pages, :published_on
   end
 end
