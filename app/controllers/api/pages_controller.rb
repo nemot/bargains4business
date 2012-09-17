@@ -11,21 +11,11 @@ class Api::PagesController < ApplicationController
 	end
 
 	def update
-		logger.info "*"*100
 		begin
 			page = Page.find(params[:id])
-
-			logger.info "*"*100
-			logger.info(page.inspect)
-			logger.info(params['pages'].first)
-			logger.info "*"*100
-			
 			page.update_attributes(params['pages'].first)
 			make_respond page.errors.empty?, page.errors.messages, page
 		rescue Exception => e
-			logger.info "*"*100
-			logger.info(e.inspect)
-			logger.info "*"*100
 			make_respond false, 'Do not post bullshit!', []
 		end
 	end
@@ -68,6 +58,7 @@ class Api::PagesController < ApplicationController
 	end
 
 	private
+	
 	# Generates respond. Created for DRY conception
 	def make_respond success, messages, pages, words_count=nil
 		pages = [pages] if pages.is_a?(Page)
