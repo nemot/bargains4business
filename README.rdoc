@@ -52,9 +52,9 @@ Basic view in xml mode is following:
 == Features
 
 1. Show all pages
-  Path: http://yourdomain.com/api/pages
-  Shows list of all pages without pagination
-  Sample respond will be following:
+Path: http://yourdomain.com/api/pages
+Shows list of all pages without pagination
+Sample respond will be following:
       { 
         "success": true,
         "message": [],
@@ -71,8 +71,8 @@ Basic view in xml mode is following:
         ]
       }
 2. Show single page
-  Shows list of pages with single element inside
-  By example get request to http://yourdomain.com/api/pages/1 returns:
+Shows list of pages with single element inside
+By example get request to http://yourdomain.com/api/pages/1 returns:
       { 
         "success": true,
         "message": [],
@@ -88,13 +88,53 @@ Basic view in xml mode is following:
         ]
       }
 3. Create page
+To create page post params to http://yourdomain.com/api/pages
+You need to wrap page attributes inside pages key like this:
+  {
+    :pages => {
+      :content=>'New page content',
+      :title=>'New page title'
+    }
+  }
+If page was created you will see response like this:
+  { 
+    "success": true,
+    "message": [],
+    "pages": [
+      "content": "New page content",
+      "created_at": "2012-09-06T15:41:16Z",
+      "id": 1,
+      "published_on": null,
+      "title": "New page title",
+      "updated_at": "2012-09-06T15:41:16Z"
+    ]
+  }
+If sommething goes wrong you will see response like this:
+  {
+    "succcess": false,
+    "message": ['Attribute title can not be blank'],
+    "pages": []
+  }
+
+* Warning! You can not save page without title attribute
 4. Update page
+This works preaty same as create feature but you should send a data to:
+  http://yourdomain.com/api/pages/[page_id]
+Response would be same
 5. Delete page
+To delete page just send DELETE request to http://yourdomain.com/api/pages/[page_id] path
+if deletion wass success you will see 
+  {"success":true, ...}
 6. List of published pages
+To see list of published pages you need to go to following path
+  http://yourdomain.com/api/pages/published
 7. List of unpublished pages
+To see list of unpublished pages you need to go to following path
+  http://yourdomain.com/api/pages/unpublished
 8. Publish page action
-
-
+To publish page you need to send POST request to 
+  http://yourdomain.com/api/pages/[page_id]/publish
+And for page with [page_id] published_on attribute will be equal to current date and time
 
 
 == Getting Started
