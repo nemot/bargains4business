@@ -51,7 +51,7 @@ Basic view in xml mode is following:
 
 == Features
 
-1. Show all pages
+* Show all pages
 Path: http://yourdomain.com/api/pages
 Shows list of all pages without pagination
 Sample respond will be following:
@@ -70,7 +70,7 @@ Sample respond will be following:
           ...
         ]
       }
-2. Show single page
+* Show single page
 Shows list of pages with single element inside
 By example get request to http://yourdomain.com/api/pages/1 returns:
       { 
@@ -87,7 +87,7 @@ By example get request to http://yourdomain.com/api/pages/1 returns:
           },
         ]
       }
-3. Create page
+* Create page
 To create page post params to http://yourdomain.com/api/pages
 You need to wrap page attributes inside pages key like this:
   {
@@ -116,22 +116,22 @@ If sommething goes wrong you will see response like this:
     "pages": []
   }
 
-* Warning! You can not save page without title attribute
-4. Update page
+Warning! You can not save page without title attribute
+* Update page
 This works preaty same as create feature but you should send a data to:
   http://yourdomain.com/api/pages/[page_id]
 Response would be same
-5. Delete page
+* Delete page
 To delete page just send DELETE request to http://yourdomain.com/api/pages/[page_id] path
 if deletion wass success you will see 
   {"success":true, ...}
-6. List of published pages
+* List of published pages
 To see list of published pages you need to go to following path
   http://yourdomain.com/api/pages/published
-7. List of unpublished pages
+* List of unpublished pages
 To see list of unpublished pages you need to go to following path
   http://yourdomain.com/api/pages/unpublished
-8. Publish page action
+* Publish page action
 To publish page you need to send POST request to 
   http://yourdomain.com/api/pages/[page_id]/publish
 And for page with [page_id] published_on attribute will be equal to current date and time
